@@ -1,225 +1,448 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Swaran's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swaran Krishna K — Data Analyst (in progress)</title>
+<meta name="description" content="Portfolio of Swaran Krishna K — MIS Trainee transitioning into Data Analytics. SQL, Python, Power BI, Tableau projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A1220;
+    --bg-elevated:#101B32;
+    --bg-elevated-2:#142140;
+    --border:#213052;
+    --text:#E7ECF6;
+    --text-muted:#8B96B4;
+    --teal:#2DD4BF;
+    --teal-dim:rgba(45,212,191,0.12);
+    --amber:#F2A93C;
+    --amber-dim:rgba(242,169,60,0.14);
+    --radius:10px;
+    --font-head:'Space Grotesk', -apple-system, 'Segoe UI', sans-serif;
+    --font-body:'Inter', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
-		<!-- SEO Meta Tags -->
-		<meta name="description" content="Analytics by Swaran - A data-driven portfolio showcasing insights, dashboards, and real-world analytics projects.">
-		<meta name="keywords" content="Swaran Krishna, Analytics, Portfolio, Data Visualization, Machine Learning, Power BI, SQL, GitHub">
-		<meta name="author" content="Swaran Krishna">
+  /* subtle grid backdrop */
+  .grid-bg{
+    position:fixed;inset:0;z-index:-1;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.18;
+    mask-image:radial-gradient(ellipse 60% 50% at 50% 0%, black 30%, transparent 75%);
+  }
 
-		<!-- CSS -->
-		<link rel="stylesheet" href="assets/css/main.css" />
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:rgba(10,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:var(--font-mono);font-size:0.95rem;color:var(--teal);text-decoration:none;}
+  .navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .navlinks a{text-decoration:none;color:var(--text-muted);font-size:0.92rem;transition:color .15s;}
+  .navlinks a:hover{color:var(--text);}
+  @media (max-width:640px){.navlinks{gap:16px;font-size:0.85rem;}}
 
-		<!-- FIXED FONT AWESOME -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVrmJY5fEJZ6WZK4ObSgZsZ0vN5a6xFQ0R3tPpMUbZhwCFf9tGPHuRjbFfR6kDzG4K7F5x5yVQqZ7RvIh+o8Kw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  section{padding:88px 0;}
+  section.tight{padding:56px 0;}
+  h1,h2,h3{font-family:var(--font-head);margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:var(--font-mono);font-size:0.82rem;color:var(--teal);margin:0 0 14px;}
 
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  /* hero */
+  .hero{padding-top:72px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start;}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem);line-height:1.15;}
+  .hero .role{color:var(--teal);}
+  .hero p.lede{color:var(--text-muted);font-size:1.08rem;max-width:46ch;margin:20px 0 28px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-body);font-weight:600;font-size:0.94rem;
+    padding:12px 22px;border-radius:8px;text-decoration:none;display:inline-block;
+    border:1px solid transparent;transition:transform .12s, border-color .12s;
+  }
+  .btn-primary{background:var(--teal);color:#04211D;}
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--teal);}
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+  /* terminal card */
+  .terminal{
+    background:var(--bg-elevated);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    font-family:var(--font-mono);
+    font-size:0.86rem;
+  }
+  .terminal-head{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;border-bottom:1px solid var(--border);
+    color:var(--text-muted);font-size:0.78rem;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--border);}
+  .terminal-body{padding:18px;}
+  .terminal-body .q{color:var(--text-muted);}
+  .terminal-body .kw{color:var(--amber);}
+  .terminal-body .str{color:var(--teal);}
+  #typed::after{content:'▍';color:var(--teal);animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .result-table{margin-top:16px;border-top:1px dashed var(--border);padding-top:14px;opacity:0;transition:opacity .4s;}
+  .result-table.show{opacity:1;}
+  .result-table table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+  .result-table th,.result-table td{text-align:left;padding:5px 8px 5px 0;color:var(--text-muted);}
+  .result-table td{color:var(--text);}
 
-			<!-- Intro -->
-			<div id="intro">
-				<h1>Analytics by Swaran<br /></h1>
-				<p>A data-driven portfolio showcasing insights, dashboards, and real-world analytics projects.</p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+  /* kpi strip */
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:760px){.kpi-grid{grid-template-columns:1fr;}}
+  .kpi{
+    background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px 18px 16px;
+  }
+  .kpi .num{font-family:var(--font-head);font-size:1.7rem;font-weight:600;}
+  .kpi .label{color:var(--text-muted);font-size:0.82rem;margin-top:4px;}
+  .bar-track{height:5px;background:var(--border);border-radius:4px;margin-top:12px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--teal);border-radius:4px;}
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Analytics by Swaran</a>
-			</header>
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
+  .about p{color:var(--text-muted);max-width:56ch;}
+  .stack-group{margin-bottom:20px;}
+  .stack-group h4{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-muted);font-weight:500;margin:0 0 10px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:var(--font-mono);font-size:0.78rem;
+    padding:5px 10px;border-radius:6px;background:var(--bg-elevated-2);
+    border:1px solid var(--border);color:var(--text);
+  }
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="index.html">Projects</a></li>
-				</ul>
-				<ul class="icons">
-					<li>
-						<a href="https://www.linkedin.com/in/swaran-krishna-68003a372/" target="_blank">
-							<i class="fab fa-linkedin"></i>
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/swaran-krishna" target="_blank">
-							<i class="fab fa-github"></i>
-						</a>
-					</li>
-				</ul>
-			</nav>
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);
+    padding:22px;display:flex;flex-direction:column;gap:12px;
+  }
+  .card .cat{
+    font-family:var(--font-mono);font-size:0.74rem;color:var(--amber);
+    background:var(--amber-dim);display:inline-block;padding:3px 9px;border-radius:5px;width:fit-content;
+  }
+  .card h3{font-size:1.12rem;}
+  .card p{color:var(--text-muted);font-size:0.92rem;margin:0;}
+  .card .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .card .tools span{font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);border:1px solid var(--border);padding:2px 8px;border-radius:5px;}
+  .card .sparkline{display:flex;align-items:flex-end;gap:3px;height:28px;margin-top:2px;}
+  .card .sparkline i{display:block;width:5px;background:var(--teal);opacity:0.55;border-radius:2px 2px 0 0;}
+  .card a.view{
+    margin-top:auto;font-size:0.88rem;font-weight:600;color:var(--teal);text-decoration:none;
+    padding-top:6px;
+  }
+  .card a.view:hover{text-decoration:underline;}
 
-			<!-- Main -->
-			<div id="main">
+  /* contact / footer */
+  footer{border-top:1px solid var(--border);padding:56px 0 40px;}
+  .contact-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
+  .contact-grid h2{font-size:1.6rem;}
+  .contact-links{display:flex;flex-direction:column;gap:10px;font-family:var(--font-mono);font-size:0.92rem;}
+  .contact-links a{text-decoration:none;color:var(--text-muted);}
+  .contact-links a:hover{color:var(--teal);}
+  .fine{color:var(--text-muted);font-size:0.8rem;margin-top:40px;}
 
-				<!-- Featured Post -->
-				<article class="post featured">
-					<header class="major">
-						<h2><a href="https://github.com/swaran-krishna/data-professional-survey-powerbi">
-							Career Trends in Data — A Power BI Dashboard Project
-						</a></h2>
-						<p>In this project, I analyzed a global survey of data professionals to uncover trends in job titles, career transitions, salaries, tools, work satisfaction, and demographics. Using Power BI, I transformed raw Excel data into interactive visualizations that reveal insights into the current state of the data industry.</p>
-					</header>
-					<a href="https://github.com/swaran-krishna/data-professional-survey-powerbi" class="image main"><img src="images/powerbi.jpg" alt="" /></a>
-					<ul class="actions special">
-						<li><a href="https://github.com/swaran-krishna/data-professional-survey-powerbi" class="button large">View Project</a></li>
-					</ul>
-				</article>
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #typed::after{animation:none;}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
 
-				<!-- Posts -->
-				<section class="posts">
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/car-price-prediction">
-								Car Price Prediction Using Machine Learning
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/car-price-prediction" class="image fit"><img src="images/car.jpg" alt="" /></a>
-						<p>This project focuses on building a predictive machine learning model to estimate used car prices based on key vehicle attributes such as brand, year, fuel type, engine size, mileage, and more. The goal was to assist dealerships or buyers in understanding fair market prices using historical data.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/car-price-prediction" class="button">View Project</a></li>
-						</ul>
-					</article>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">swaran.query()</a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/Loan-Delinquency-Prediction/tree/main">
-								Loan Delinquency Prediction
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Portfolio — Malappuram, Kerala</p>
+      <h1>Swaran Krishna K<br><span class="role">Aspiring Data Analyst</span></h1>
+      <p class="lede">Currently an MIS Trainee, building the SQL, Python and BI skills to move into data analytics — one real project at a time.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#" id="resume-link">Download résumé</a>
+        <a class="btn btn-ghost" href="#projects">See projects</a>
+      </div>
+    </div>
 
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/Loan-Delinquency-Prediction/tree/main" class="image fit"><img src="images/Bank.jpg" alt="" /></a>
-						<p>This project analyzed a dataset of 500 customer records over 6 months to identify risk factors linked to delinquent accounts. The study found that income, credit utilization, age, and payment history were strong predictors of delinquency.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/Loan-Delinquency-Prediction/tree/main" class="button">View Project</a></li>
-						</ul>
-					</article>
+    <div class="terminal" aria-hidden="false">
+      <div class="terminal-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;analyst.sql</div>
+      <div class="terminal-body">
+        <div class="q">&gt; <span class="kw">SELECT</span> name, current_role, target_role <span class="kw">FROM</span> swaran <span class="kw">WHERE</span> status = <span class="str">'in_progress'</span>;</div>
+        <div id="typed"></div>
+        <div class="result-table" id="resultTable">
+          <table>
+            <tr><th>name</th><th>current_role</th><th>target_role</th></tr>
+            <tr><td>Swaran Krishna K</td><td>MIS Trainee</td><td>Data Analyst</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/Airbnb-Data-Analysis-Tableau-Dashboard">
-								Airbnb Data Analysis-Tableau Dashboard
+<section class="tight" id="stats">
+  <div class="wrap">
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="num">8+</div>
+        <div class="label">Months in MIS role</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%"></div></div>
+      </div>
+      <div class="kpi">
+        <div class="num">10</div>
+        <div class="label">Independent analytics projects</div>
+        <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="kpi">
+        <div class="num">2</div>
+        <div class="label">Certificates — IBM Data Analyst, SQL for Data Analysis (Maven Analytics)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/Airbnb-Data-Analysis-Tableau-Dashboard" class="image fit"><img src="images/AIRBNB.jpeg" alt="" /></a>
-						<p>This project analyzes Airbnb listings data using Tableau to uncover pricing and demand insights. The dashboard visualizes average price per bedroom, price variations across Seattle zip codes, and yearly revenue trends. Findings highlight how property size, location, and seasonality influence pricing, helping hosts optimize rental strategies and improve competitiveness.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/Airbnb-Data-Analysis-Tableau-Dashboard" class="button">View Project</a></li>
-						</ul>
-					</article>
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about">
+      <p class="eyebrow">About</p>
+      <h2>MIS background, analyst ambitions.</h2>
+      <p style="margin-top:18px;">I work as an MIS Trainee, where I spend my days close to reporting and business data. I'm using that as a base to move into data analytics — I've completed a 3-month Data Analytics internship, the IBM Data Analyst Professional Certificate, the SQL for Data Analysis course (Maven Analytics), and built ten independent projects across SQL, Python, Power BI and Tableau to prove I can do the job, not just talk about it. I'm looking for Data Analyst, BI Analyst or Reporting Analyst roles where I can put both sides of that experience to work.</p>
+    </div>
+    <div id="skills">
+      <p class="eyebrow">Current stack</p>
+      <div class="stack-group">
+        <h4>Query &amp; data prep</h4>
+        <div class="chips">
+          <span class="chip">SQL / MySQL</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Power Query</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Analysis &amp; modeling</h4>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">NumPy</span>
+          <span class="chip">Scikit-learn</span>
+          <span class="chip">XGBoost</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Visualization</h4>
+        <div class="chips">
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">Seaborn</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Other tools</h4>
+        <div class="chips">
+          <span class="chip">GitHub</span>
+          <span class="chip">Jupyter</span>
+          <span class="chip">Flask</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/Retail-Analytics-Chip-Category-Trial-Store-Analysis">
-								Retail Analytics: Chip Category & Trial Store Analysis
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/Retail-Analytics-Chip-Category-Trial-Store-Analysis-" class="image fit"><img src="images/Chips.jpg" alt="" /></a>
-						<p>This project analyzes chip category purchasing behavior and evaluates trial store performance against matched control stores. Using segmentation by lifestage and affluence, statistical testing, and data visualization, it identifies high-value customer groups and validates trial success. Recommendations guide strategic rollout, customer targeting, and category growth opportunities for future planning.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/Retail-Analytics-Chip-Category-Trial-Store-Analysis" class="button">View Project</a></li>
-						</ul>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/layoffs-data-analysis">
-								Data Cleaning and Exploration Using MySQL
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/layoffs-data-analysis" class="image fit"><img src="images/mysql.webp" alt="" /></a>
-						<p>In this project, I used SQL to clean, format, and explore a raw dataset to prepare it for analysis. The dataset contained inconsistencies, null values, duplicates, and formatting issues that needed to be addressed to ensure data quality and reliability. After cleaning, I performed exploratory queries to uncover trends, patterns, and summary statistics.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/layoffs-data-analysis" class="button">View Project</a></li>
-						</ul>
-					</article>
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h2 style="margin-bottom:28px;">What I've built while learning.</h2>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
 
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/Crypto-API-Automation">
-								Automating Crypto Website API Pull Using Python
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/Crypto-API-Automation" class="image fit"><img src="images/crypto.jpg" alt="" /></a>
-						<p>This project focused on building an automated pipeline to fetch real-time cryptocurrency data using a public API. The goal was to collect, store, and analyze price movements and market metrics for major cryptocurrencies such as Bitcoin, Ethereum, and others.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/Crypto-API-Automation" class="button">View Project</a></li>
-						</ul>
-					</article>
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Open to Data Analyst roles.</h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:swarankrishna07@gmail.com">swarankrishna07@gmail.com</a>
+        <a href="tel:+918330069071">+91 83300 69071</a>
+        <a href="https://www.linkedin.com/in/swaran-krishna-68003a372/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/swaran-krishna" target="_blank" rel="noopener">GitHub</a>
+        <span style="color:var(--text-muted);">Malappuram, Kerala</span>
+      </div>
+    </div>
+    <p class="fine">© <span id="year"></span> Swaran Krishna K</p>
+  </div>
+</footer>
 
-					<article>
-						<header>
-							<h2><a href="https://github.com/swaran-krishna/bike-purchase-analysis-excel">
-								Consumer Lifestyle Analysis Using Excel
-							</a></h2>
-						</header>
-						<a href="https://github.com/swaran-krishna/bike-purchase-analysis-excel" class="image fit"><img src="images/consumer.jpeg" alt="" /></a>
-						<p>In this project, I analyzed a dataset of individuals to understand how various lifestyle and demographic factors influence consumer behavior — specifically the likelihood of purchasing a bicycle. Using Excel's data tools, I performed detailed cleaning, filtering, pivot analysis, and visualizations.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/swaran-krishna/bike-purchase-analysis-excel" class="button">View Project</a></li>
-						</ul>
-					</article>
-				</section>
-			</div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section>
-					<section class="alt">
-						<h3>Address</h3>
-						<p>Malappuram, Kerala<br /></p>
-					</section>
-					<section>
-						<h3>Phone</h3>
-						<p><a href="#">8330069071</a></p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p><a href="#">swarankrishna07@gmail.com</a></p>
-					</section>
-					<h3>Social</h3>
-					<ul class="icons alt">
-						<li>
-							<a href="https://www.linkedin.com/in/swaran-krishna-68003a372/" target="_blank">
-								<i class="fab fa-linkedin"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/swaran-krishna" target="_blank">
-								<i class="fab fa-github"></i>
-							</a>
-						</li>
-					</ul>
-				</section>
-			</footer>
+  // Typing animation for the terminal
+  (function(){
+    var target = "-- result set: 1 row";
+    var el = document.getElementById('typed');
+    var table = document.getElementById('resultTable');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){
+      el.textContent = target;
+      table.classList.add('show');
+      return;
+    }
+    var i = 0;
+    function tick(){
+      if(i <= target.length){
+        el.textContent = target.slice(0, i);
+        i++;
+        setTimeout(tick, 28);
+      } else {
+        setTimeout(function(){ table.classList.add('show'); }, 200);
+      }
+    }
+    setTimeout(tick, 500);
+  })();
 
-			<!-- Copyright -->
-			<div id="copyright">
-				<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-			</div>
+  // Project data — edit links/descriptions freely
+  var projects = [
+    {
+      cat: "GenAI / SQL",
+      title: "AI Business Analyst",
+      desc: "A Streamlit app that turns plain-English business questions into SQL against a retail database using Google's Gemini API, with conversation memory, caching and query-safety checks.",
+      tools: ["Python","Streamlit","SQLite","Gemini API"],
+      link: "https://github.com/swaran-krishna/ai-business-analyst-ai",
+      bars: [40,65,30,80,55]
+    },
+    {
+      cat: "BI Dashboard",
+      title: "Career Trends in Data",
+      desc: "Analyzed a global survey of data professionals in Power BI to surface trends in job titles, career transitions, salaries, tools and job satisfaction.",
+      tools: ["Power BI","Excel"],
+      link: "https://github.com/swaran-krishna/data-professional-survey-powerbi",
+      bars: [50,70,45,90,60]
+    },
+    {
+      cat: "Business Analytics",
+      title: "Retail Analytics: Chip Category &amp; Trial Store",
+      desc: "Segmented customers by lifestage and affluence, ran statistical tests, and evaluated trial-store performance against matched control stores to validate rollout strategy.",
+      tools: ["Python","Statistics"],
+      link: "https://github.com/swaran-krishna/Retail-Analytics-Chip-Category-Trial-Store-Analysis",
+      bars: [60,40,75,50,85]
+    },
+    {
+      cat: "Predictive Modeling",
+      title: "Loan Delinquency Prediction",
+      desc: "Analyzed 500 customer records over six months to identify risk factors for delinquency — income, credit utilization, age and payment history stood out as strong predictors.",
+      tools: ["Python","XGBoost"],
+      link: "https://github.com/swaran-krishna/Loan-Delinquency-Prediction/tree/main",
+      bars: [70,55,65,40,75]
+    },
+    {
+      cat: "Predictive Modeling",
+      title: "ClassicCar Valuator",
+      desc: "An end-to-end used-car price predictor with a Flask/React web app on top, estimating prices from brand, year, fuel type, engine size and mileage — achieved R² ~0.96, MAE ~1383.54 and RMSE ~2037.66 on the test set.",
+      tools: ["Python","Scikit-learn","XGBoost","Flask","React"],
+      link: "https://github.com/swaran-krishna/car-price-prediction",
+      bars: [90,60,95,70,85]
+    },
+    {
+      cat: "Predictive Modeling",
+      title: "Telecom Customer Churn",
+      desc: "Compared Logistic Regression, Random Forest and XGBoost to predict which telecom customers were likely to churn, and identified the strongest drivers behind cancellations.",
+      tools: ["Python","Pandas","Scikit-learn","XGBoost"],
+      link: "https://github.com/swaran-krishna/Telecom_Churn_Analysis",
+      bars: [55,70,45,80,60]
+    },
+    {
+      cat: "BI Dashboard",
+      title: "Airbnb Data Analysis",
+      desc: "Visualized Airbnb listings in Tableau — average price per bedroom, pricing across Seattle zip codes, and yearly revenue trends — to guide host pricing strategy.",
+      tools: ["Tableau"],
+      link: "https://github.com/swaran-krishna/Airbnb-Data-Analysis-Tableau-Dashboard",
+      bars: [55,60,40,85,50]
+    },
+    {
+      cat: "Data Cleaning / SQL",
+      title: "Layoffs Data Cleaning",
+      desc: "Used SQL to clean and standardize a raw dataset — nulls, duplicates and formatting issues — then ran exploratory queries to surface trends and summary statistics.",
+      tools: ["MySQL"],
+      link: "https://github.com/swaran-krishna/layoffs-data-analysis",
+      bars: [65,45,70,55,40]
+    },
+    {
+      cat: "Automation",
+      title: "Crypto API Automation",
+      desc: "Built a pipeline that pulls real-time cryptocurrency data from a public API to collect, store and analyze price movements for major coins.",
+      tools: ["Python","REST API"],
+      link: "https://github.com/swaran-krishna/Crypto-API-Automation",
+      bars: [35,55,75,45,60]
+    },
+    {
+      cat: "Excel Analysis",
+      title: "Consumer Lifestyle Analysis",
+      desc: "Explored how lifestyle and demographic factors influence bicycle purchase likelihood, using Excel for cleaning, pivot analysis and visualization.",
+      tools: ["Excel"],
+      link: "https://github.com/swaran-krishna/bike-purchase-analysis-excel",
+      bars: [50,65,40,55,70]
+    }
+  ];
 
-		</div>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-	</body>
+  var grid = document.getElementById('projGrid');
+  projects.forEach(function(p){
+    var bars = p.bars.map(function(h){ return '<i style="height:'+h+'%"></i>'; }).join('');
+    var tools = p.tools.map(function(t){ return '<span>'+t+'</span>'; }).join('');
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML =
+      '<span class="cat">'+p.cat+'</span>' +
+      '<h3>'+p.title+'</h3>' +
+      '<div class="sparkline">'+bars+'</div>' +
+      '<p>'+p.desc+'</p>' +
+      '<div class="tools">'+tools+'</div>' +
+      '<a class="view" href="'+p.link+'" target="_blank" rel="noopener">View on GitHub</a>';
+    grid.appendChild(card);
+  });
+</script>
+</body>
 </html>
